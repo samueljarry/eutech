@@ -1,39 +1,39 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require "faker"
 
+Stock.delete_all
+Article.delete_all
 Fournisseur.delete_all
 
-fournisseurs = Fournisseur.create([
-    {
-      nom: "Nike",
-      provenance: "Chine",
-      telephone: "01 70 48 90 73",
-      email: "contact@nike.com"
-    },
-    {
-      nom: "New Balance",
-      provenance: "Taiwan",
-      telephone: "0 805 10 99 46",
-      email: "contact@newbalance.com"
-    }
-                                  ])
+10.times do
 
-articles = Article.create([
+
+  fournisseur = Fournisseur.create(
     {
-      nom: "Air Force One",
-      marque: fournisseurs.first,
-      prix: 130,
-      categorie: "Chaussures"
-    },
-    {
-      nom: "New Balance 550",
-      marque: fournisseurs.find(2),
-      prix: 150,
-      categorie: "Chaussures"
+      nom: Faker::Commerce.unique.brand,
+      provenance: Faker::Address.country,
+      telephone: Faker::PhoneNumber.cell_phone_in_e164,
+      email: Faker::Internet.email
     }
-])
+  )
+
+  article = Article.create(
+    {
+      nom: Faker::Commerce.unique.product_name,
+      fournisseur_id: fournisseur.id,
+      prix: Faker::Number.within(range: 1..150),
+      categorie: Faker::Commerce.department(max: 1)
+    }
+  )
+
+  Stock.create(
+    {
+      article_id: article.id,
+      xs: Faker::Number.number(digits: 2),
+      s: Faker::Number.number(digits: 2),
+      m: Faker::Number.number(digits: 2),
+      l: Faker::Number.number(digits: 2),
+      xl: Faker::Number.number(digits: 2),
+    }
+  )
+end
+

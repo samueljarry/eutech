@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_173413) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_135947) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nom"
-    t.string "marque"
-    t.string "cover_url"
-    t.string "image_url"
+    t.bigint "fournisseur_id"
     t.integer "prix"
     t.string "categorie"
+    t.string "cover_url"
+    t.string "image_url"
+    t.index ["fournisseur_id"], name: "index_articles_on_fournisseur_id"
   end
 
   create_table "fournisseurs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -32,4 +33,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_173413) do
     t.string "logo_url"
   end
 
+  create_table "stocks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "article_id"
+    t.integer "xs"
+    t.integer "s"
+    t.integer "m"
+    t.integer "l"
+    t.integer "xl"
+    t.index ["article_id"], name: "index_stocks_on_article_id"
+  end
+
+  add_foreign_key "articles", "fournisseurs"
+  add_foreign_key "stocks", "articles"
 end
