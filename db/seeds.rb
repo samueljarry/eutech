@@ -4,12 +4,11 @@ Stock.delete_all
 Article.delete_all
 Fournisseur.delete_all
 
-10.times do
-
+20.times do
 
   fournisseur = Fournisseur.create(
     {
-      nom: Faker::Commerce.unique.brand,
+      nom: Faker::Commerce.brand,
       provenance: Faker::Address.country,
       telephone: Faker::PhoneNumber.cell_phone_in_e164,
       email: Faker::Internet.email
@@ -28,12 +27,14 @@ Fournisseur.delete_all
   Stock.create(
     {
       article_id: article.id,
-      xs: Faker::Number.number(digits: 2),
-      s: Faker::Number.number(digits: 2),
-      m: Faker::Number.number(digits: 2),
-      l: Faker::Number.number(digits: 2),
-      xl: Faker::Number.number(digits: 2),
+      xs: xs = Faker::Number.within(range: 0..10),
+      s: s = Faker::Number.within(range: 0..10),
+      m: m = Faker::Number.within(range: 0..10),
+      l: l = Faker::Number.within(range: 0..10),
+      xl: xl = Faker::Number.within(range: 0..10),
+      total: xs + s + m + l + xl
     }
   )
+
 end
 
