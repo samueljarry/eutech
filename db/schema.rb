@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_06_161300) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_150925) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_161300) do
     t.string "categorie"
     t.string "cover_url"
     t.string "image_url"
+    t.boolean "enStock"
     t.index ["fournisseur_id"], name: "index_articles_on_fournisseur_id"
   end
 
