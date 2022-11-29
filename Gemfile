@@ -9,8 +9,13 @@ gem 'activestorage'
 # Faker
 gem "faker"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+# Devise
+gem "devise"
+
+# Pundit
+gem "pundit"
+
+# Bundle edge Rails instead: gem "rails", gith
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
