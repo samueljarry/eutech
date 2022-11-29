@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_151201) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_182759) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -72,6 +72,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_151201) do
     t.integer "xl"
     t.integer "total"
     t.index ["article_id"], name: "index_stocks_on_article_id"
+  end
+
+  create_table "test_pundits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @test_pundit %>
+
+<div>
+  <%= link_to "Edit this test pundit", edit_test_pundit_path(@test_pundit) %> |
+  <%= link_to "Back to test pundits", test_pundits_path %>
+
+  <br />
+  <%= @test_pundit.nom %>
+  <%= button_to "Destroy this test pundit", @test_pundit, method: :delete %>
+</div>

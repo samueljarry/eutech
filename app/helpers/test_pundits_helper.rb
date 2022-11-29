@@ -1,0 +1,2 @@
+module TestPunditsHelper
+end

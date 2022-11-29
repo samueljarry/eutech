@@ -1,0 +1,2 @@
+class TestPundit < ApplicationRecord
+end

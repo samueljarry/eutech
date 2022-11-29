@@ -15,6 +15,12 @@ Fournisseur.delete_all
     }
   )
 
+  TestPundit.create(
+    {
+      nom: Faker::Commerce.brand
+    }
+  )
+
   article = Article.create(
     {
       nom: Faker::Commerce.unique.product_name,
